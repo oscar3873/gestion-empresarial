@@ -1,0 +1,9 @@
+<h2>{% if object %}Editar{% else %}Agregar{% endif %} Teléfono</h2>
+<form method="post" enctype="multipart/form-data" novalidate>
+    {% csrf_token %}
+    <table>
+        {{ form.as_table }}
+    </table>
+    <button type="submit">Guardar</button>
+    <a href="{% url 'personas:telefonos_list' %}">Cancelar</a>
+</form>

@@ -1,0 +1,28 @@
+<h1>Lista de Domicilios</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Domicilio completo</th>
+            <th>De</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for domicilio in domicilios %}
+        <tr>
+            <td>
+                <p>{{domicilio}}</p>
+            </td>
+            <td>
+                {% for persona in domicilio.personas.all %}
+                <a href="{% url 'personas:personas_detail' persona.id %}">{{ persona }}</a> &nbsp; {% empty %} No asignado {% endfor %}
+
+            </td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="4">No hay domicilios registrados.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>

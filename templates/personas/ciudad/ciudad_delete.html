@@ -1,0 +1,8 @@
+<h1>Eliminar Ciudad</h1>
+<p>¿Está seguro que desea eliminar el ciudad "{{ ciudad }}"?</p>
+
+<form method="post">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-danger">Eliminar</button>
+    <a href="{% url 'personas:domicilios_list' %}" class="btn btn-secondary">Cancelar</a>
+</form>

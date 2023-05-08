@@ -6,9 +6,11 @@ from dotenv import load_dotenv
 
 load_dotenv()
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-sys.path.insert(0, os.path.join(BASE_DIR, 'apps'))
+BASE_DIR_ROOT = os.path.dirname(BASE_DIR)
 
 
+sys.path.insert(0, os.path.join(BASE_DIR_ROOT, 'apps'))
+sys.path.insert(0, os.path.join(BASE_DIR_ROOT, 'utils'))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
@@ -31,7 +33,12 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "apps.empleados"
+    "apps.empleados",
+    "apps.compras",
+    "apps.ventas",
+    "apps.produccion",
+    "apps.proyectos",
+    "apps.personas",
 ]
 
 MIDDLEWARE = [
@@ -50,7 +57,9 @@ WSGI_APPLICATION = "config.wsgi.application"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [],
+        "DIRS": [
+            os.path.join(BASE_DIR_ROOT, "templates"),
+        ],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [

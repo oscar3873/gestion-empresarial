@@ -44,3 +44,25 @@ htmlcov/
 
 # Ignore migrations
 /apps/*/migrations/
+
+# Ignore compiled Python files
+*.pyc
+
+# Ignore Pipenv environment files
+/.venv
+/.pipenv
+
+# Ignore editor files
+.vscode/
+*.idea/
+
+# Ignore compiled files
+*.o
+*.so
+*.exe
+*.dll
+
+# Ignore package files
+*.egg-info/
+dist/
+build/

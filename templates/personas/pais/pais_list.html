@@ -1,0 +1,22 @@
+<h1>Lista de Paises</h1>
+
+{% if paises %}
+<table class="table">
+    <thead>
+        <tr>
+            <th>Pais</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for pais in paises %}
+        <tr>
+            <td>
+                <a href="{% url 'personas:paises_detail' pais.id %}">{{ pais }}</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<p>No hay paises.</p>
+{% endif %}

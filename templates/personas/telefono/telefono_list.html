@@ -1,0 +1,30 @@
+<h1>Agenda</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Numero de Telefono</th>
+            <th>Tipo de numero</th>
+            <th>Persona</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for telefono in telefonos %}
+        <tr>
+            <td>
+                <a href="tel:+{{telefono.cod_pais}}{{telefono.cod_area}}{{telefono.numero}}">+{{telefono.cod_pais}} {{telefono.cod_area}} {{telefono.numero}}</a>
+            </td>
+            <td>
+                {{telefono.tipo}}
+            </td>
+            <td>
+                <a href="{% url 'personas:personas_detail' telefono.persona.id %}">{{telefono.persona}}</a>
+            </td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="4">No hay personas registradas.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>

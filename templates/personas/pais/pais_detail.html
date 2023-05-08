@@ -1,0 +1,9 @@
+<h1><a href="{% url 'personas:paises_list' %}">{{pais}}</a></h1>
+
+{% if pais.estados.all %}
+<h2>Estados/Provincias</h2>
+{% for estado in pais.estados.all %}
+<p><a href="{% url 'personas:estados_detail' estado.id %}">{{estado}}</a></p>
+{% endfor %} {% else %}
+<p>No hay estados/provincias.</p>
+{% endif %}

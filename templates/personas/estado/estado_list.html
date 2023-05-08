@@ -1,0 +1,26 @@
+<h1>Lista de Estados/Provincias</h1>
+
+{% if estados %}
+<table class="table">
+    <thead>
+        <tr>
+            <th>Estado/Provincia</th>
+            <th>Pais</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for estado in estados %}
+        <tr>
+            <td>
+                <p>{{estado}}</p>
+            </td>
+            <td>
+                <a href="{% url 'personas:paises_detail' estado.pais.id %}">{{ estado.pais }}</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<p>No hay estados.</p>
+{% endif %}

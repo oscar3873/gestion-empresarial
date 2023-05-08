@@ -1,0 +1,44 @@
+<h1>Detalles de {{persona.nombre}} {{persona.apellido}}</h1>
+<p>Nombre: {{persona.nombre}}</p>
+<p>Apellido: {{persona.apellido}}</p>
+<p>DNI: {{persona.dni}}</p>
+<p>Fecha de Nacimiento: {{persona.fecha_nacimiento}}</p>
+<p>Género: {{persona.get_genero_display }}</p>
+
+<h2>Domicilio</h2>
+
+{% if persona.domicilio %} {% with domicilio=persona.domicilio %}
+<span>
+    <a href="{% url 'personas:domicilios_list' %}">
+        {{domicilio.calle}} {{domicilio.numero}} {{domicilio.piso}} {{domicilio.ciudad}} {{domicilio.ciudad.estado}} {{domicilio.ciudad.estado.pais}}
+    </a>
+</span> {% endwith %} {% else %}
+<p>No hay domicilio registrado</p>
+{% endif %}
+
+<h2>Contacto</h2>
+<p>Correo: <a href="mailto:{{persona.correo}}">{{persona.correo}}</a></p>
+
+<h3>Números de teléfono:</h3>
+{% if persona.telefonos.all %}
+<table>
+    <thead>
+        <tr>
+            <td>Numero </td>
+            <td>Tipo de numero</td>
+        </tr>
+    </thead>
+    <tbody>
+        {% for telefono in persona.telefonos.all %}
+        <tr>
+            <td>
+                <p><a href="tel:+{{telefono.cod_pais}} {{telefono.cod_area}} {{telefono.numero}}">{{telefono}}</a></p>
+            </td>
+            <td><b>{{telefono.tipo}}</b></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<p>No hay teléfonos registrados</p>
+{% endif %}

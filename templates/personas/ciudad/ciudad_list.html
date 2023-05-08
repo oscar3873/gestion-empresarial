@@ -1,0 +1,26 @@
+<h1>Lista de Ciudades</h1>
+
+{% if ciudades %}
+<table class="table">
+    <thead>
+        <tr>
+            <th>Ciudad</th>
+            <th>Provincia</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for ciudad in ciudades %}
+        <tr>
+            <td>
+                <p>{{ciudad}}</p>
+            </td>
+            <td>
+                <a href="{% url 'personas:estados_detail' ciudad.estado.id %}">{{ ciudad.estado }}</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<p>No hay ciudades.</p>
+{% endif %}
